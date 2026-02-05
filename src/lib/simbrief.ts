@@ -93,16 +93,17 @@ export async function openSimBriefPopup(
   }
 
   // Build SimBrief URL with all parameters
-  const simbriefUrl = new URL('https://dispatch.simbrief.com/options/custom');
+  const simbriefUrl = new URL('https://www.simbrief.com/ofp/ofp.loader.api.php');
   const params = new URLSearchParams();
   
-  // Required params - SimBrief expects apicode first, then outputpage, then timestamp
+  // Required params
   params.set('apicode', data.api_code);
   params.set('outputpage', outputPage);
   params.set('timestamp', timestamp.toString());
   params.set('orig', formData.orig.toUpperCase());
   params.set('dest', formData.dest.toUpperCase());
   params.set('type', formData.type);
+  
   
   // Optional params
   if (formData.airline) params.set('airline', formData.airline);
@@ -123,14 +124,14 @@ export async function openSimBriefPopup(
   if (formData.pax) params.set('pax', formData.pax);
   if (formData.route) params.set('route', formData.route);
 
-  simbriefUrl.search = params.toString();
+  simbriefUrl.search = params.toStrin();
   
   console.log('Opening SimBrief popup:', simbriefUrl.toString());
   
   // Open popup
   const popup = window.open(
     simbriefUrl.toString(),
-    'SimBriefDispatch',
+    'SimBriefispatch',
     'width=1200,height=800,resizable=yes,scrollbars=yes'
   );
   
