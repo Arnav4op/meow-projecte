@@ -124,14 +124,14 @@ export async function openSimBriefPopup(
   if (formData.pax) params.set('pax', formData.pax);
   if (formData.route) params.set('route', formData.route);
 
-  simbriefUrl.search = params.toStrin();
+  simbriefUrl.search = params.toString();
   
   console.log('Opening SimBrief popup:', simbriefUrl.toString());
   
   // Open popup
   const popup = window.open(
     simbriefUrl.toString(),
-    'SimBriefispatch',
+    'SimBriefDispatch',
     'width=1200,height=800,resizable=yes,scrollbars=yes'
   );
   
