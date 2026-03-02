@@ -29,3 +29,9 @@ verify_jwt = false
 
 [functions.auto-assign-career-admin]
 verify_jwt = false
+
+[functions.discord-bot]
+verify_jwt = false
+
+[functions.discord-pirep-webhook]
+verify_jwt = false
