@@ -115,11 +115,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { error };
   };
 
-  // Auto-approve these emails (pre-approved users)
-  const PRE_APPROVED_EMAILS = ['admin@aflv.ru', 'admin@aeroflotvirtual.com'];
-  const isPreApproved = PRE_APPROVED_EMAILS.includes(email.toLowerCase());
-
   const signUp = async (email: string, password: string, name: string, callsign: string, baseAirport: string = 'UUEE', simbriefPid?: string, ifcUsername?: string) => {
+    // Auto-approve these emails (pre-approved users)
+    const PRE_APPROVED_EMAILS = ['admin@aflv.ru', 'admin@aeroflotvirtual.com'];
+    const isPreApproved = PRE_APPROVED_EMAILS.includes(email.toLowerCase());
+    
     const redirectUrl = `${window.location.origin}/`;
     
     const { data, error } = await supabase.auth.signUp({
