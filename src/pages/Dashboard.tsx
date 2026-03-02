@@ -94,7 +94,7 @@ export default function Dashboard() {
     if (data) setRecentPireps(data);
   };
 
-  if (loading) {
+  if (loading || !user || (user && !profile)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <Plane className="h-8 w-8 animate-pulse text-primary" />

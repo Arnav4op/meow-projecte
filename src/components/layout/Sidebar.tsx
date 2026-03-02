@@ -8,10 +8,13 @@ import {
   Award,
   Settings,
   Users,
-  LogOut
+  LogOut,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/hooks/useAuth';
+import { useTheme } from '@/hooks/useTheme';
 import { Button } from '@/components/ui/button';
 
 const pilotNavItems = [
@@ -38,6 +41,7 @@ const adminNavItems = [
 export function Sidebar() {
   const location = useLocation();
   const { profile, isAdmin, signOut } = useAuth();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <aside className="flex flex-col h-full bg-sidebar text-sidebar-foreground relative z-50">
@@ -106,6 +110,14 @@ export function Sidebar() {
             <p className="text-xs text-sidebar-foreground/70">{isAdmin ? 'Admin' : 'Pilot'}</p>
           </div>
         </div>
+        <Button 
+          variant="ghost" 
+          className="w-full justify-start gap-3 text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent mt-2"
+          onClick={toggleTheme}
+        >
+          {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+        </Button>
         <Button 
           variant="ghost" 
           className="w-full justify-start gap-3 text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent mt-2"

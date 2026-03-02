@@ -12,6 +12,7 @@ import { IFAirportCard } from '@/components/aviation/IFAirportCard';
 import { ATISCard } from '@/components/aviation/ATISCard';
 import { MetarWeatherCard } from '@/components/aviation/MetarWeatherCard';
 import { FlightRouteMap } from '@/components/aviation/FlightRouteMap';
+import { EnrouteWindsProfile } from '@/components/aviation/EnrouteWindsProfile';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 
@@ -398,6 +399,12 @@ export default function OFPViewer() {
 
             {/* Weather Tab */}
             <TabsContent value="weather" className="space-y-6">
+              {/* En-Route Winds Profile */}
+              <EnrouteWindsProfile 
+                navlog={ofpData.navlog} 
+                cruiseAltitude={parseInt(ofpData.general.initial_altitude) || 35000}
+              />
+
               {/* Wind Compass Cards */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <MetarWeatherCard 
