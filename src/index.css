@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,59 +11,53 @@
 @layer base {
   :root {
     /* Light theme */
-    --background: 220 15% 96%;
-    --foreground: 220 25% 12%;
+    --background: 210 20% 98%;
+    --foreground: 220 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 12%;
+    --card-foreground: 220 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 12%;
+    --popover-foreground: 220 25% 15%;
 
     --primary: 190 80% 50%;
-    --primary-foreground: 220 25% 10%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 90%;
-    --secondary-foreground: 220 25% 12%;
+    --secondary: 210 15% 96%;
+    --secondary-foreground: 220 25% 15%;
 
-    --muted: 220 15% 92%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 210 15% 94%;
+    --muted-foreground: 220 10% 40%;
 
-    --accent: 160 70% 45%;
+    --accent: 160 65% 45%;
     --accent-foreground: 0 0% 100%;
 
-    --success: 160 70% 40%;
+    --success: 160 65% 45%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 45 90% 50%;
-    --warning-foreground: 20 10% 8%;
+    --warning: 45 85% 55%;
+    --warning-foreground: 20 10% 10%;
 
-    --info: 200 85% 50%;
+    --info: 200 80% 50%;
     --info-foreground: 0 0% 100%;
 
-    --destructive: 0 70% 50%;
+    --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
+    --border: 210 15% 85%;
+    --input: 210 15% 90%;
     --ring: 190 80% 50%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 220 20% 98%;
+    --sidebar-background: 210 20% 96%;
     --sidebar-foreground: 220 25% 15%;
     --sidebar-primary: 190 80% 50%;
-    --sidebar-primary-foreground: 220 25% 10%;
-    --sidebar-accent: 220 15% 93%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 15% 92%;
     --sidebar-accent-foreground: 220 25% 15%;
-    --sidebar-border: 220 15% 88%;
+    --sidebar-border: 210 15% 85%;
     --sidebar-ring: 190 80% 50%;
-
-    --va-blue: 190 80% 50%;
-    --va-dark: 220 20% 98%;
-    --va-card: 0 0% 100%;
-    --va-border: 220 15% 88%;
-    --va-gold: 190 80% 50%;
   }
 
   .dark {
@@ -96,7 +92,7 @@
     --info: 195 80% 55%;
     --info-foreground: 220 25% 8%;
 
-    --destructive: 0 70% 50%;
+    --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 215 25% 18%;
@@ -111,12 +107,6 @@
     --sidebar-accent-foreground: 210 18% 85%;
     --sidebar-border: 215 25% 20%;
     --sidebar-ring: 185 80% 55%;
-
-    --va-blue: 185 80% 55%;
-    --va-dark: 215 30% 10%;
-    --va-card: 215 30% 12%;
-    --va-border: 215 25% 18%;
-    --va-gold: 185 80% 55%;
   }
 }
 
@@ -127,7 +117,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
   }
 
   /* Custom scrollbar */
@@ -326,5 +316,10 @@
   .border-glow {
     border: 1px solid hsl(var(--border));
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  /* Light mode specific overrides */
+  .light .sidebar {
+    background: hsl(var(--sidebar-background)) !important;
   }
 }

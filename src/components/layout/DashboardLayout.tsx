@@ -8,15 +8,11 @@ interface DashboardLayoutProps {
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="min-h-screen" style={{
-      background: 'linear-gradient(180deg, #0c1929 0%, #0a1525 50%, #0d1f33 100%)'
-    }}>
+    <div className="min-h-screen bg-background">
       <Header />
       <div className="flex">
         {/* Desktop sidebar */}
-        <div className="hidden md:block w-64 fixed left-0 top-12 bottom-0 border-r" style={{
-          borderColor: 'rgba(100, 150, 200, 0.1)'
-        }}>
+        <div className="hidden md:block w-64 fixed left-0 top-0 bottom-0 bg-sidebar border-r border-sidebar-border">
           <Sidebar />
         </div>
         

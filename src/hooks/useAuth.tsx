@@ -115,6 +115,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { error };
   };
 
+  // Auto-approve these emails (pre-approved users)
+  const PRE_APPROVED_EMAILS = ['admin@aflv.ru', 'admin@aeroflotvirtual.com'];
+  const isPreApproved = PRE_APPROVED_EMAILS.includes(email.toLowerCase());
+
   const signUp = async (email: string, password: string, name: string, callsign: string, baseAirport: string = 'UUEE', simbriefPid?: string, ifcUsername?: string) => {
     const redirectUrl = `${window.location.origin}/`;
     
@@ -128,7 +132,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (error) return { error, user: null };
 
-    // Create profile for new user
+    // Create profile for new user - auto-approve if pre-approved
     if (data.user) {
       const { error: profileError } = await supabase
         .from('profiles')
@@ -137,7 +141,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           name,
           callsign: callsign.toUpperCase(),
           base_airport: baseAirport,
-          is_approved: false,
+          is_approved: isPreApproved, // Auto-approve pre-defined emails
           simbrief_pid: simbriefPid || null,
           ifc_username: ifcUsername || null,
         });
@@ -157,7 +161,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           base_airport: baseAirport,
           simbrief_pid: simbriefPid || null,
           ifc_username: ifcUsername || null,
-          status: 'pending',
+          status: isPreApproved ? 'approved' : 'pending', // Auto-approve status
         });
 
       if (regError) {
@@ -169,7 +173,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .from('user_roles')
         .insert({
           user_id: data.user.id,
-          role: 'pilot',
+          role: isPreApproved ? 'admin' : 'pilot',
         });
 
       if (roleError) {
